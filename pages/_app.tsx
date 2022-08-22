@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       <ProviderIndex>
         <SessionProvider session={session}>
           <Layout>
-            <Component {...pageProps} />   
+            <Component {...pageProps} />
           </Layout>
         </SessionProvider>
       </ProviderIndex>

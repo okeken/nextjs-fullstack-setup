@@ -29,7 +29,7 @@ router.post(async (req: NextApiRequest, res: NextApiResponse) => {
       .json({ error: "invalid or expired token", status: false });
   } catch (e) {
     console.log(e, "error>>>");
-    return res.status(423).json({
+    return res.status(501).json({
       error: e,
     });
   }

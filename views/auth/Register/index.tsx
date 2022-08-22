@@ -83,7 +83,7 @@ const RegisterView = () => {
             <div>
               <div className="relative m">
                 <Input
-                disabled={loading}
+                  disabled={loading}
                   errors={errors}
                   register={register}
                   label="email"

@@ -70,7 +70,7 @@ router.post(async (req: NextApiRequest, res: NextApiResponse) => {
     });
   } catch (e) {
     console.log("Error", e);
-    return res.status(423).json({
+    return res.status(501).json({
       error: e,
     });
   }
