@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { compare } from "bcryptjs";
 import userDB from "@servers/models/user";
+import loginWithProviders from "@servers/services/login-with-providers";
 
 import { ILogin } from "Types";
 import connectDB, { closeDB } from "@servers/config/database";
@@ -49,6 +50,23 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
+  callbacks: {
+    async signIn({ account, profile:{email, name, email_verified} }) {
+      if (account.provider === "google") {
+        const info = {
+          email,
+          isVerified:email_verified  ?? false,
+          userName:name
+        }
+       await loginWithProviders(info)
+        return true;
+      }
+      return false; // Do different verification for other providers that don't have `email_verified`
+    },
+    async redirect({ url, baseUrl }) {
+      return `${baseUrl}/dashboard`;
+    },
+  },
 };
 
 export default NextAuth(authOptions);

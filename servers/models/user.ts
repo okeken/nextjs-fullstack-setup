@@ -3,12 +3,17 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const UserSchema = new Schema(
   {
-    // userName: {
-    //   type: String,
-    //   required: true,
-    // },
+    userName: {
+      type: String,
+    },
     isVerified: {
       type: Boolean,
+    },
+    authWith: {
+      type: String,
+    },
+    profileImage: {
+      type: String,
     },
     email: {
       type: String,

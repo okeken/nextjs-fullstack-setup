@@ -175,7 +175,7 @@ const PasswordResetView = () => {
               <input hidden name="mode" />
               <div>
                 <Input
-                disabled={loading}
+                  disabled={loading}
                   errors={errors}
                   register={register}
                   label="password"

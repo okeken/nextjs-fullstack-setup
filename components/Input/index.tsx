@@ -10,7 +10,7 @@ interface IInputProps extends IElementProps {
   errors: any;
   pattern?: IPattern;
   useRegexPattern?: boolean;
-  disabled?:boolean
+  disabled?: boolean;
 }
 
 const Input = ({
@@ -25,7 +25,7 @@ const Input = ({
   pattern,
   children,
   useRegexPattern = true,
-  disabled=false
+  disabled = false,
 }: IInputProps) => {
   const err =
     errors[name]?.type === "required" ||
@@ -46,7 +46,7 @@ const Input = ({
         htmlFor={name}
       >
         <input
-        disabled={disabled}
+          disabled={disabled}
           placeholder={placeholder}
           name={name}
           id={name}

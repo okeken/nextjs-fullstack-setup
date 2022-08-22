@@ -9,9 +9,7 @@ const Home = () => {
       <div className="grid h-screen place-items-center">
         <div>
           <Button className="mr-6" onClick={incrementCount}>
-            <>
-            Plus
-            </>
+            <>Plus</>
           </Button>
           <span
             className={`${
@@ -23,9 +21,7 @@ const Home = () => {
             {count}
           </span>
           <Button className="ml-6" onClick={decrementCount}>
-            <>
-            Minus
-            </>
+            <>Minus</>
           </Button>
         </div>
       </div>

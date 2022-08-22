@@ -6,6 +6,7 @@ import Input from "@components/Input";
 import { ILogin, IPattern } from "Types";
 import useAuth from "../hooks/useAuth";
 import ErrorBlock from "@components/ErrorBlock";
+import Google from "@components/commons/Icons/google";
 
 const defaultState = {
   loading: false,
@@ -21,6 +22,9 @@ const LoginView = () => {
     formState: { errors },
   } = useForm<ILogin>();
 
+  const googleSignIn = async () => {
+     await signIn("google");
+  };
   const onSubmit = async (data: ILogin) => {
     setStatus({ loading: true, error: "" });
     try {
@@ -53,20 +57,32 @@ const LoginView = () => {
     <>
       <div className="max-w-screen-xl px-4 pt-16 mx-auto sm:px-6 lg:px-8">
         <div className="max-w-lg mx-auto">
-          <h1 className="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">
+          <h1 className="text-2xl font-bold text-center text-indigo-600 sm:text-3xl mb-2">
             Welcome Back
           </h1>
+        <div  className="p-8 mb-0 space-y-4 rounded-lg shadow-2xl">
 
+       
+          <div >
+           
+          <button
+          onClick={googleSignIn}
+              className='flex justify-center items-center w-full px-5 py-3 text-sm font-medium  border text-indigo-600 border-indigo-600 rounded-lg '
+            >
+              <Google className="mr-2" />
+            Continue with Google
+            </button>
+
+          </div>
           <ErrorBlock error={error} className="my-1" />
           <form
-            className="p-8 mb-0 space-y-4 rounded-lg shadow-2xl"
             onSubmit={handleSubmit(onSubmit)}
           >
             <p className="text-lg font-medium">Sign in to your account</p>
             <div>
               <div className="relative m">
                 <Input
-                disabled={loading}
+                  disabled={loading}
                   errors={errors}
                   register={register}
                   label="email"
@@ -98,7 +114,7 @@ const LoginView = () => {
 
             <div>
               <Input
-              disabled={loading}
+                disabled={loading}
                 errors={errors}
                 register={register}
                 label="password"
@@ -156,6 +172,7 @@ const LoginView = () => {
               </Link>
             </p>
           </form>
+          </div>
         </div>
       </div>
     </>

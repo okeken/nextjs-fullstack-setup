@@ -26,7 +26,6 @@ router.post(async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const userRegistering = await userDb.findOne({ email });
-
     if (userRegistering) {
       await closeDB();
       return res
@@ -38,6 +37,7 @@ router.post(async (req: NextApiRequest, res: NextApiResponse) => {
       ...userInfo,
       password: await hash(password, Number(process.env.BCRYPT_SALT as string)),
       email: email.toLowerCase(),
+      authWith: "email",
     };
 
     const userData: any = new userDb(data);
@@ -46,7 +46,7 @@ router.post(async (req: NextApiRequest, res: NextApiResponse) => {
 
     const emailObj = { email, link: "", name: "" } as UserObj;
     const emailSent = await sendEmail(
-      "Welcome to Sync-link",
+      "Welcome to nextjs-fullstack-stp",
       "welcome",
       emailObj
     );
