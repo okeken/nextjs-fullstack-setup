@@ -1,12 +1,14 @@
 # Full Stack Next.js Template ( Database setup + Authentication)
 
-This template shows is a boilerplate ready-made full-stack setup with nextjs-auth.
+This template is a boilerplate ready-made full-stack setup with Nextjs-auth.
 
 It comes with email service integration( Mailgun ) during any authentication process.
 
 ## What's Included
 
 - [ ] Database Integration - Mongodb
+- [ ] CSS - Tailwind CSS
+- [ ] Authentication - Nextjs-Auth
 - [ ] Authentication setup
   - [ ] Login,
   - [ ] Register,

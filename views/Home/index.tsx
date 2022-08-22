@@ -1,17 +1,17 @@
 import Button from "@components/Button";
 import Head from "next/head";
-import Image from "next/image";
 import useCounter from "./hooks/useCounter";
 
 const Home = () => {
   const { decrementCount, incrementCount, count } = useCounter();
-  console.log(typeof count);
   return (
     <>
       <div className="grid h-screen place-items-center">
         <div>
           <Button className="mr-6" onClick={incrementCount}>
+            <>
             Plus
+            </>
           </Button>
           <span
             className={`${
@@ -23,7 +23,9 @@ const Home = () => {
             {count}
           </span>
           <Button className="ml-6" onClick={decrementCount}>
+            <>
             Minus
+            </>
           </Button>
         </div>
       </div>

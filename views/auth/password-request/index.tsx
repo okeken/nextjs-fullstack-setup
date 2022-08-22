@@ -69,6 +69,7 @@ const PasswordResetView = () => {
     register,
     handleSubmit,
     formState: { errors },
+    // @ts-ignore
   } = useForm<any>(validationOpt);
 
   interface IResetPassword {
@@ -101,11 +102,10 @@ const PasswordResetView = () => {
   };
 
   const resendToken = async () => {
-    console.log("re-sending ");
     setResend((prev) => ({ ...prev, loading: true, error: "" }));
     try {
       const response = await resendPasswordRequestEmail(userId as string);
-      console.log("response >>", response);
+
       if (!!response.error)
         return setResend((prev) => ({
           ...prev,
