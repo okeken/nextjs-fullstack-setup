@@ -25,7 +25,6 @@ const ForgotPasswordView = () => {
 
   const onSubmit = async ({ email }: IEmail) => {
     setStatus({ loading: true, error: "", message: "" });
-    console.log(email, "submitted");
     try {
       const response = await requestResetPassword(email);
       console.log(response);

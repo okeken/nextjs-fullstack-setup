@@ -34,7 +34,6 @@ const RegisterView = () => {
         ...prev,
         message: result.data,
       }));
-      console.log(result, "result network try");
       router.push("/login");
     } catch (e: any) {
       console.log(e, "error register catch");

@@ -36,6 +36,7 @@ const LoginView = () => {
         return setStatus({ loading: false, error: response?.error as string });
       router.push("/dashboard");
     } catch (e) {
+        console.log('error login', e)
       setStatus((prev) => ({ ...prev, loading: false }));
     } finally {
       setStatus((prev) => ({ ...prev, loading: false }));
@@ -67,6 +68,7 @@ const LoginView = () => {
            
           <button
           onClick={googleSignIn}
+          disabled={loading}
               className='flex justify-center items-center w-full px-5 py-3 text-sm font-medium  border text-indigo-600 border-indigo-600 rounded-lg '
             >
               <Google className="mr-2" />

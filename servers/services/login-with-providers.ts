@@ -38,7 +38,7 @@ const loginWithProviders = async(data:any)=>{
         const userData: any = new userDb(info);
          await userData.save();
         await closeDB();
-       
+        console.log(email, 'email checkkk')
         const emailObj = { email, link: "", name: "" } as UserObj;
         await sendEmail("Welcome to nextjs-fullstack-stp", "welcome", emailObj);
    

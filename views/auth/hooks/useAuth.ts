@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import axios from "axios";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn, signOut,} from "next-auth/react";
 import { IConfirmToken, IRegister, IResetPassword } from "Types";
 
 const defaultState = {

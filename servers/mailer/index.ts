@@ -37,7 +37,6 @@ export const sendEmail = async (
 ) => {
   const { from, replyTo } = mailSenderConfig;
   const { link, email } = userObject;
-  console.log("ulinks", link);
   const template = handlebars.compile(emailTemplate(fileName));
   const sendApplicationResp = template({
     replyTo,

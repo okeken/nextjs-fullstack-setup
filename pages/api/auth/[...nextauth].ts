@@ -39,6 +39,7 @@ export const authOptions: NextAuthOptions = {
           if (!isPasswordValid) throw "invalid password";
           return { email, password };
         } catch (e: any) {
+          console.log('error flag', e)
           throw new Error(e);
         } finally {
           await closeDB();
@@ -50,23 +51,33 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
+
   callbacks: {
-    async signIn({ account, profile:{email, name, email_verified} }) {
-      if (account.provider === "google") {
+    async signIn({ user, account, profile, email, credentials }) {
+      const isAllowedToSignIn = true
+            if (account.provider === "google") {
         const info = {
-          email,
-          isVerified:email_verified  ?? false,
-          userName:name
+          email:profile.email,
+          isVerified:profile.email_verified  ?? false,
+          userName:profile.name,
+          authWith:'google'
         }
        await loginWithProviders(info)
         return true;
       }
-      return false; // Do different verification for other providers that don't have `email_verified`
+      if (isAllowedToSignIn) {
+        return true
+      } else {
+        // Return false to display a default error message
+        return false
+        // Or you can return a URL to redirect to:
+        // return '/unauthorized'
+      }
     },
-    async redirect({ url, baseUrl }) {
+       async redirect({ url, baseUrl }) {
       return `${baseUrl}/dashboard`;
     },
-  },
+  }
 };
 
 export default NextAuth(authOptions);
