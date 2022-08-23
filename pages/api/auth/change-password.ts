@@ -41,14 +41,6 @@ router.post(async (req: NextApiRequest, res: NextApiResponse) => {
       Number(process.env.BCRYPT_SALT as string)
     );
 
-    const upadateRecords = async ()=>{
-        return   userDb.updateOne(
-        { _id: userId },
-        { $set: { password: hashPassword } },
-        { new: true }
-      ),
-    }
-
     Promise.all([
       userDb.updateOne(
         { _id: userId },
